@@ -1,5 +1,5 @@
 @description('The location into which your Azure resources should be deployed.')
-param location string = resourceGroup().location
+param location string = 'japanwest'
 
 @description('Select the type of environment you want to provision. Allowed values are Production and Test.')
 @allowed([
@@ -114,4 +114,5 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   sku: environmentConfigurationMap[environmentType].storageAccount.sku
 }
 
+output appServiceAppName string = appServiceApp.name
 output appServiceAppHostName string = appServiceApp.properties.defaultHostName
